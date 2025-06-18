@@ -3,15 +3,11 @@ title: "Penguins"
 author: "Jean Clipperton"
 date: "`r Sys.Date()`"
 output: 
-  prettydoc::html_pretty:
-    theme: cayman
-    highlight: github
+  md_document
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, message = F)
-# Note you might have to install prettydoc
-# install.packages("prettydoc")
 ```
 
 ## R Markdown
@@ -39,7 +35,12 @@ summarize(
 Summarize the dataset in a meaningful way (use AT LEAST two of the key functions from slide #12)
 
 ```{r}
-
+penguins %>%
+  filter(sex == "female") %>%
+  group_by(island) %>%
+  summarize(avg_bill_length = mean(bill_length_mm, na.rm = TRUE),
+            avg_bill_depth = mean(bill_depth_mm, na.rm = TRUE),
+            avg_mass = mean(body_mass_g, na.rm = TRUE))
 ```
 
 # Final task
