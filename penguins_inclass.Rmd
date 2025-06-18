@@ -37,7 +37,7 @@ Summarize the dataset in a meaningful way (use AT LEAST two of the key functions
 ```{r}
 penguins %>%
   filter(sex == "female") %>%
-  group_by(island) %>%
+  group_by(island, species) %>%
   summarize(avg_bill_length = mean(bill_length_mm, na.rm = TRUE),
             avg_bill_depth = mean(bill_depth_mm, na.rm = TRUE),
             avg_mass = mean(body_mass_g, na.rm = TRUE))
